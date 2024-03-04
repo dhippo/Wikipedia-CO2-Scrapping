@@ -13,5 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiez le reste du code source de votre projet dans le conteneur
 COPY . .
 
-# Commande par défaut pour exécuter l'application
-CMD ["python", "main.py"]
+# Commande pour exécuter l'application à l'aide de Uvicorn
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+

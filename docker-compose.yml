@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+    container_name: carbon_scrapping_project
+    volumes:
+      - ./src:/app/code
+    ports:
+      - 8019:80 
+    networks:
+      - dev
+
+  db:
+    image: mysql
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: 'carbon_emissions'
+    networks:
+      - dev
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - 8081:80  
+    environment:
+      PMA_HOST: db
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  db-data:
