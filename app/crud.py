@@ -1,9 +1,13 @@
+# app/crud.py
 from sqlalchemy.orm import Session
 from . import models
 import requests
 from bs4 import BeautifulSoup
 
 def scrape_and_save(db: Session):
+    if check_data_exists(db):
+        return "Données déjà scrappées"
+
     # Scrapping Wikipedia
     url = 'https://fr.wikipedia.org/wiki/Gaz_%C3%A0_effet_de_serre'
     response = requests.get(url)
@@ -48,3 +52,5 @@ def clean_and_convert_to_float(data_str):
     cleaned_str = data_str.replace('\xa0', '').replace(' ', '').replace(',', '.')
     return float(cleaned_str)
 
+def check_data_exists(db: Session):
+    return db.query(models.Emission).count() > 20
