@@ -13,7 +13,7 @@ Projet simple permettant de récupérer les informations du tableau "Émissions 
 
 ## (1) Cloner le projet 
 ```bash
-git clone https://github.com/
+git clone https://github.com/dhippo/Wikipedia-CO2-Scrapping
 ```
 
 ## (2) Ouvrir une BDD locale MAMP ou WAMP
@@ -42,7 +42,7 @@ Ouvrir l'application de Docker sur la machine locale permettant de suivre les im
 docker build -t scrappingco2emissions .
 ```
 
-## (6) Créer un fichier .env
+## (6) Vérifier le fichier .env
 Pour MAMP sur mac, valeurs de base :
 ```bash
 DB_HOST=host.docker.internal
