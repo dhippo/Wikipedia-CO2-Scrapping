@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Commande par défaut pour exécuter l'application
-CMD ["python", "scrapper.py"]
+CMD ["python", "main.py"]
